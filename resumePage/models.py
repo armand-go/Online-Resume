@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
@@ -6,7 +7,7 @@ class Section(models.Model):
     title = models.CharField(max_length=256)
 
 class Bullet(models.Model):
-    section = ForeignKey(Section, on_delete=models.CASCADE)
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
 
     bulletImage = models.ImageField(default=None)
     title = models.CharField(max_length=256, default='')
