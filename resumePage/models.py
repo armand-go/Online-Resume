@@ -13,7 +13,7 @@ class Bullet(models.Model):
     content = models.TextField(max_length=1500, default='')
 
     subtitle = models.CharField(max_length=256)
-    subtitleImage = models.ImageField()
+    subtitleImage = models.ImageField(default=None)
     beginDate = models.DateField(default=date.today)
     endDate = models.DateField(default=date.today)
     current = models.BooleanField(default=False)
