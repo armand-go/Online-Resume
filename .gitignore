@@ -2,6 +2,7 @@
 
 db.sqlite3
 .gitignore.swp
+staticfiles/
 
 *.pyc
 myResume/__pycache__/*
