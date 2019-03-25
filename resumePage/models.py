@@ -13,8 +13,8 @@ class Section(models.Model):
 class Bullet(models.Model):
     section = models.ForeignKey(Section, related_name='bullet', on_delete=models.CASCADE)
 
-    bulletImage = models.ImageField(default=None, blank=True)
     title = models.CharField(max_length=256, default='')
+    bulletImage = models.ImageField(default=None, blank=True)
 
     def __str__(self):
         return self.title
@@ -32,8 +32,7 @@ class Text(Content):
         return self.description
 
 class Bars(Content):
-    def __str__(self):
-        return self.progress_bar.all()
+    pass
 
 class ProgressBar(models.Model):
     bar = models.ForeignKey(Bars, related_name='progress_bar', on_delete=models.CASCADE)
