@@ -3,8 +3,20 @@ from datetime import date
 
 # Create your models here.
 
+class Introduction(models.Model):
+    name = models.CharField(max_length=256, default='')
+    surname = models.CharField(max_length=256, default='')
+    profession = models.CharField(max_length=256, default='')
+    introduction = models.TextField(default='')
+
+    profile_pic = models.ImageField(default=None)
+
+    def __str__(self):
+        return self.name + ' ' + self.surname
+
+
 class Section(models.Model):
-    title = models.CharField(max_length=256, unique=True)
+    title = models.CharField(max_length=256, unique=True, default='')
     order = models.IntegerField(default=0)
 
     def __str__(self):
