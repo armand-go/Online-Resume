@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Section, Bullet, Text, Project, ProgressBar, Bars
+from .models import Introduction, Section, Bullet, Text, Project, ProgressBar, Bars
 
 # Register your models here.
 admin.site.register(Introduction)
