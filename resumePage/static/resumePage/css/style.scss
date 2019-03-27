@@ -5,9 +5,8 @@ body
 
 .container
 {
-  background: url() no-repeat top left;
-  background: url() no-repeat top right;
-
+  background: url("../../../media/resumePage/paper-bg2.png") no-repeat top left;
+  background-color: #fafafa;
 
   margin-top: 50px;
   margin-bottom: 200px;
@@ -93,6 +92,8 @@ body
 
   .resume_container
   {
+    background: url("../../../media/resumePage/paper-bg-bot.png") no-repeat bottom right;
+
     height: 245px;
     margin-top: 50px;
     position: relative;
