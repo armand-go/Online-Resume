@@ -1,5 +1,8 @@
 from django.db import models
+
 from datetime import date
+from PIL import Image
+
 
 # Create your models here.
 
@@ -9,7 +12,7 @@ class Introduction(models.Model):
     profession = models.CharField(max_length=256, default='')
     introduction = models.TextField(default='')
 
-    profile_pic = models.ImageField(default=None)
+    profile_pic = models.ImageField(upload_to='resumePage/img/', default=None, null=True, blank=True)
 
     def __str__(self):
         return self.name + ' ' + self.surname
@@ -22,6 +25,7 @@ class Section(models.Model):
     def __str__(self):
         return self.title
 
+
 class Bullet(models.Model):
     section = models.ForeignKey(Section, related_name='bullet', on_delete=models.CASCADE)
 
@@ -31,11 +35,13 @@ class Bullet(models.Model):
     def __str__(self):
         return self.title
 
+
 class Content(models.Model):
     bullet = models.OneToOneField(Bullet, on_delete=models.CASCADE)
 
     subtitle = models.CharField(max_length=256, default=None, blank=True)
     subtitleImg = models.ImageField(default=None, blank=True)
+
 
 class Text(Content):
     description = models.TextField(default='')
@@ -43,8 +49,10 @@ class Text(Content):
     def __str__(self):
         return self.description
 
+
 class Bars(Content):
     pass
+
 
 class ProgressBar(models.Model):
     bar = models.ForeignKey(Bars, related_name='progress_bar', on_delete=models.CASCADE)
@@ -55,9 +63,11 @@ class ProgressBar(models.Model):
     def __str__(self):
         return self.text
 
+
 class Portfolio(Content):
     def __str__(self):
         return self.project.all()
+
 
 class Project(models.Model):
     portfolio = models.ForeignKey(Portfolio, related_name='project', on_delete=models.SET_NULL, null=True)

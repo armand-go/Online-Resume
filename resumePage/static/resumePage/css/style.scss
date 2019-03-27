@@ -5,6 +5,10 @@ body
 
 .container
 {
+  background: url() no-repeat top left;
+  background: url() no-repeat top right;
+
+
   margin-top: 50px;
   margin-bottom: 200px;
   width: 975px;
@@ -141,15 +145,20 @@ body
         margin: 0 auto;
         background: #fafafa;
 
-        img
+        .img
         {
+          text-align: center;
+          background-size: cover;
+          background-position: center;
+
           width: 188px;
           height: 188px;
           margin-top: 6px;
+          margin-left: 6px;
+
           border-radius: 100%;
           -moz-border-radius: 100%;
           -webkit-border-radius: 100%;
-          overflow: hidden;
           -webkit-transition: all 0.3s ease-in-out;
           -moz-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;

@@ -11,9 +11,9 @@ class ResumeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TemplateView, self).get_context_data(**kwargs)
         try:
-            context['intro'] = Introduction.objects.get(pk=1)
+            context['intro'] = Introduction.objects.get(surname='Gonthier')
         except Introduction.DoesNotExist:
-            return 'error'
+            context['intro'] = 'Error'
         return context
 
     def get(self, request):
