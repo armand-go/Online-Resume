@@ -15,20 +15,35 @@
     <title>Armand GONTHIER's resume</title>
   </head>
   <body>
-    <div class="container shadow mb-5 offset-md-2 bg-white rounded">
-      <div class="top-colors row">
-        <div class="top-color color1"></div>
-        <div class="top-color color2"></div>
-        <div class="top-color color3"></div>
-        <div class="top-color color1"></div>
-        <div class="top-color color2"></div>
+    <div class="row">
+      <div class="container shadow mb-5 offset-md-2 bg-white rounded">
+        <div class="top-colors row">
+          <div class="top-color color1"></div>
+          <div class="top-color color2"></div>
+          <div class="top-color color3"></div>
+          <div class="top-color color1"></div>
+          <div class="top-color color2"></div>
+        </div>
+        <div class="header-buttons col-md-10 offset-md-1 row">
+          <a href="#" class="btn btn-primary"><i class="fas fa-download"></i><span class="hide-text-box"><span class="hide-text dwld">Download my resume</span></span></a>
+          <a href="#" class="btn btn-primary"><i class="far fa-envelope"></i><span class="hide-text-box"><span class="hide-text msg">Send me a message</span></span></a>
+          <a href="#" class="btn btn-primary"><i class="fas fa-project-diagram"></i><span class="hide-text-box"><span class="hide-text proj">Check out my projects!</span></span></a>
+        </div>
+        <div class="resume_container row">
+          <div class="col-md-4 col-profile_pic">
+            <div class="profile_pic">
+              <div class="profile_border">
+                <img src="{{ info.profile_pic.url }}" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7 intro">
+            <div class="intro title">Hi, I'm <span class="bold">{{ intro.name }} {{ intro.surname }}!</span></div>
+            <div class="intro subtitle">{{ intro.profession }}</div>
+            <div class="intro description">{{ intro.introduction }}</div>
+          </div>
+        </div>
       </div>
-      <div class="header-buttons col-md-10 offset-md-1 row">
-        <a href="#" class="btn btn-primary"><i class="fas fa-download"></i><span class="hide-text-box"><span class="hide-text dwld">Download my resume</span></span></a>
-        <a href="#" class="btn btn-primary"><i class="far fa-envelope"></i><span class="hide-text-box"><span class="hide-text msg">Send me a message</span></span></a>
-        <a href="#" class="btn btn-primary"><i class="fas fa-project-diagram"></i><span class="hide-text-box"><span class="hide-text proj">Check out my projects!</span></span></a>
-      </div>
-      <div class="resume_container"></div>
     </div>
   </body>
 </html>
