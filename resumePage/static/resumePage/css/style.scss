@@ -1,9 +1,93 @@
 body
 {
-  background-color: black;
+  background-color: grey;
 }
 
 .container
 {
-  background-color: white;
+  margin-top: 50px;
+  height: 500px;
+
+  .top-colors
+  {
+    .top-color
+    {
+      height: 8px;
+      width: 20%;
+      float: left;
+    }
+    .color1{background: #249991;}
+    .color2{background: #3b658a;}
+    .color3{background: #ce5f5f;}
+  }
+
+  .header-buttons
+  {
+    justify-content: flex-end;
+    margin-top: 15px;
+  }
+
+  .resume_container
+  {
+    background-color: black;
+    // background: url(../img/paper-bg2.png) no-repeat top left, url(../img/paper-bg-bot.png) no-repeat bottom right, #fafafa;
+  }
+}
+
+.btn-primary
+{
+  background: #3b658a;
+  color: #fafafa;
+  border: #3b658a;
+
+  &:hover
+  {
+    background: #194368;
+  }
+}
+
+.btn
+{
+  display: flex;
+
+  font-size: 14px;
+  margin-right: 4px;
+
+  height: 30px;
+  width: 37px;
+  padding-top: 8px;
+
+  line-height: normal;
+  transition: all 0.3s ease-in-out;
+
+  span
+  {
+    &.hide-text-box
+    {
+      width: 0;
+      overflow: hidden;
+    }
+
+    &.hide-text
+    {
+      position: absolute;
+      font-size: 10px;
+      width: 0;
+      overflow: hidden;
+      padding-top: 1px;
+
+      text-transform: uppercase;
+      transition: all 0.4s ease-in-out;
+
+      opacity: 0;
+    }
+  }
+
+  &:hover span
+  {
+    width: fit-content;
+    opacity: 1;
+    padding-left: 4px;
+    transition: all 0.4s ease-in-out;
+  }
 }

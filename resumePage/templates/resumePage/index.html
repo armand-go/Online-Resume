@@ -4,18 +4,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     {% compress css %}
       <link rel="stylesheet" type="text/x-scss" href="{% static 'resumePage/css/style.scss'%}" />
     {% endcompress %}
+    <script type="text/javascript" src="{% static 'resumePage/js/resumePage.js' %}"></script>
     <meta charset="utf-8">
-    <title>Armand GONTHIER</title>
+    <title>Armand GONTHIER's resume</title>
   </head>
   <body>
-    <div class="container">
-      {% block body_block %}
-        <h1>Hello World!</h1>
-      {% endblock %}
+    <div class="container shadow mb-5 offset-md-2 bg-white rounded">
+      <div class="top-colors row">
+        <div class="top-color color1"></div>
+        <div class="top-color color2"></div>
+        <div class="top-color color3"></div>
+        <div class="top-color color1"></div>
+        <div class="top-color color2"></div>
+      </div>
+      <div class="header-buttons col-md-10 offset-md-1 row">
+        <a href="#" class="btn btn-primary"><i class="fas fa-download"></i><span class="hide-text-box"><span class="hide-text dwld">Download my resume</span></span></a>
+        <a href="#" class="btn btn-primary"><i class="far fa-envelope"></i><span class="hide-text-box"><span class="hide-text msg">Send me a message</span></span></a>
+        <a href="#" class="btn btn-primary"><i class="fas fa-project-diagram"></i><span class="hide-text-box"><span class="hide-text proj">Check out my projects!</span></span></a>
+      </div>
+      <div class="resume_container"></div>
     </div>
   </body>
 </html>
