@@ -44,6 +44,23 @@
             <div class="intro description">{{ intro.introduction }}</div>
           </div>
         </div>
+        <div class="sections_container row">
+          {% for section in sections %}
+          <div class="new_section">
+            <div class="section_title">
+              {{ section.title }}
+              {% for bullet in section.bullet.all %}
+              <div class="section_bullet">
+                {{ bullet.title }}
+                <div class="bullet_content">
+                
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </body>

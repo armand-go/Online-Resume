@@ -5,7 +5,6 @@ from PIL import Image
 
 
 # Create your models here.
-
 class Introduction(models.Model):
     name = models.CharField(max_length=256, default='')
     surname = models.CharField(max_length=256, default='')
@@ -25,22 +24,34 @@ class Section(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['order']
+
 
 class Bullet(models.Model):
     section = models.ForeignKey(Section, related_name='bullet', on_delete=models.CASCADE)
 
     title = models.CharField(max_length=256, default='')
     bulletImage = models.ImageField(default=None, blank=True)
+    order = models.IntegerField(default=0)
+    
 
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['order']
+
 
 class Content(models.Model):
-    bullet = models.OneToOneField(Bullet, on_delete=models.CASCADE)
+    bullet = models.OneToOneField(Bullet, related_name='%(class)s_content',
+                                on_delete=models.CASCADE, default=None)
 
     subtitle = models.CharField(max_length=256, default=None, blank=True)
     subtitleImg = models.ImageField(default=None, blank=True)
+
+    class Meta:
+        abstract = True
 
 
 class Text(Content):
@@ -53,12 +64,11 @@ class Text(Content):
 class Bars(Content):
     pass
 
-
 class ProgressBar(models.Model):
-    bar = models.ForeignKey(Bars, related_name='progress_bar', on_delete=models.CASCADE)
+    bar = models.ForeignKey(Bars, related_name='progress_bar', on_delete=models.CASCADE, default=None)
 
     text = models.CharField(max_length=256, default='')
-    percentage = models.IntegerField(null=True)
+    percentage = models.IntegerField()
 
     def __str__(self):
         return self.text

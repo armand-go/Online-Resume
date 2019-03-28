@@ -92,8 +92,6 @@ body
 
   .resume_container
   {
-    background: url("../../../media/resumePage/paper-bg-bot.png") no-repeat bottom right;
-
     height: 245px;
     margin-top: 50px;
     position: relative;
@@ -163,6 +161,43 @@ body
           -webkit-transition: all 0.3s ease-in-out;
           -moz-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+  .sections_container
+  {
+    background: url("../../../media/resumePage/paper-bg-bot.png") no-repeat bottom right;
+
+    padding-right: 15px;
+    padding-left: 15px;
+
+    .new_section
+    {
+      display: block;
+      width: 100%;
+
+      margin-top: 50px;
+      margin-left: 243px;
+
+      .section_title
+      {
+        text-transform: uppercase;
+        color: #2a5479;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 40px;
+        padding-bottom: 20px;
+
+        .section_bullet
+        {
+          color: #3b658a;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 5px;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 20px;
+          margin-top: 14px;
         }
       }
     }
