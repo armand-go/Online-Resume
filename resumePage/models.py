@@ -33,7 +33,7 @@ class Bullet(models.Model):
     section = models.ForeignKey(Section, related_name='bullets', on_delete=models.CASCADE)
 
     title = models.CharField(max_length=256, default='')
-    bulletImage = models.FileField(upload_to='resumePage/svg/bullet', default='resumePage/svg/bullet/circle-solid.svg'
+    bulletImage = models.FileField(upload_to='resumePage/svg/bullet', default='resumePage/svg/bullet/circle-solid.svg',
                                     null=True, blank=True)
     modified = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
