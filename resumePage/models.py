@@ -11,7 +11,8 @@ class Introduction(models.Model):
     profession = models.CharField(max_length=256, default='')
     introduction = models.TextField(default='')
 
-    profile_pic = models.ImageField(upload_to='resumePage/img/profilePic/', default=None, null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='resumePage/img/profilePic/',
+                                    default=None, null=True, blank=True)
 
     def __str__(self):
         return self.name + ' ' + self.surname
@@ -32,11 +33,12 @@ class Bullet(models.Model):
     section = models.ForeignKey(Section, related_name='bullets', on_delete=models.CASCADE)
 
     title = models.CharField(max_length=256, default='')
-    bulletImage = models.FileField(upload_to='resumePage/svg/bullet', default='resumePage/svg/bullet/circle-solid.svg')
+    bulletImage = models.FileField(upload_to='resumePage/svg/bullet', default='resumePage/svg/bullet/circle-solid.svg'
+                                    null=True, blank=True)
     modified = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
 
-    related_content = models.CharField(max_length=256, default='', blank=True)
+    related_content = models.CharField(max_length=256, default='None', blank=True)
 
     def get_related_content(self):
         if hasattr(self, 'text_content'):
@@ -61,7 +63,8 @@ class Bullet(models.Model):
 
 class Content(models.Model):
     bullet = models.OneToOneField(Bullet, related_name='%(class)s_content',
-                                on_delete=models.CASCADE, default=None, blank=True, null=True)
+                                on_delete=models.CASCADE, default=None,
+                                blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -87,11 +90,12 @@ class Bars(Content):
         self.bullet.save()
         super(Bars, self).save(*args, **kwargs)
 
+
 class ProgressBar(models.Model):
     bar = models.ForeignKey(Bars, related_name='progress_bars', on_delete=models.CASCADE, default=None)
 
     text = models.CharField(max_length=256, default='')
-    percentage = models.IntegerField()
+    percentage = models.IntegerField(default=0)
 
     def __str__(self):
         return self.text
@@ -108,10 +112,12 @@ class Portfolio(Content):
 
 
 class Project(models.Model):
-    portfolio = models.ForeignKey(Portfolio, related_name='projects', on_delete=models.SET_NULL, null=True)
+    portfolio = models.ForeignKey(Portfolio, related_name='projects',
+                                    on_delete=models.SET_NULL, null=True, blank=True)
 
     name = models.CharField(max_length=256, default='')
-    illustration = models.ImageField(upload_to='resumePage/img/projects',blank=True, null=True)
+    illustration = models.ImageField(upload_to='resumePage/img/projects',
+                                        blank=True, null=True)
 
     def __str__(self):
         return self.name
