@@ -56,15 +56,14 @@ class Content(models.Model):
     bullet = models.OneToOneField(Bullet, related_name='%(class)s_content',
                                 on_delete=models.CASCADE, default=None)
 
-    subtitle = models.CharField(max_length=256, default=None, blank=True)
-    subtitleImg = models.FileField(upload_to='resumePage/svg/content', default=None, blank=True)
-
     class Meta:
         abstract = True
 
 
 class Text(Content):
     description = models.TextField(default='')
+    subtitle = models.CharField(max_length=256, default=None, blank=True)
+    subtitleImg = models.FileField(upload_to='resumePage/svg/content', default=None, blank=True)
 
     def __str__(self):
         return self.description

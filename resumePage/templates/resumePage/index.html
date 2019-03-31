@@ -61,8 +61,9 @@
               {% if bullet.get_related_content == "Text" %}
               <div class="section_bullet_subtitle">{{ bullet.text_content.subtitle }}</div>
               <div class="bullet_content">
-                <div class="text_content">{{ bullet.text_content.description|linebreaks }}</div>
+                <div class="text_content">{{ bullet.text_content.description|linebreaks|safe }}</div>
               </div>
+              {% else if bullet.get_related_content == "Bars" %}
               {% endif %}
             </div>
             {% endfor %}
