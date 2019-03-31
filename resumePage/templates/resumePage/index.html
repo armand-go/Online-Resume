@@ -54,7 +54,7 @@
             </div>
             {% for bullet in section.bullets.all %}
             <div class="section_bullet">
-              <div class="bullet_box">
+              <div class="bullet_box {% if bullet.modified %}new_svg{% endif %}">
                 <div class="bullet_svg">{% include bullet.bulletImage.url %}</div>
               </div>
               <div class="section_bullet_title">{{ bullet.title }}</div>

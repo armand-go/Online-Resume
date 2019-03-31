@@ -75,17 +75,19 @@ function connectBullet(el1, el2) {
   y_center1 = el1.offset().top + el1.height()/2
   y_center2 = el2.offset().top + el2.height()/2
   distance = y_center2 - y_center1
-  width = Math.max(el1.width(), el2.width())
+  width = el1.width()
+
+  distance -= el2.height()/2 + el1.height()/2
 
   svg = document.createElementNS(xmlns, "svg");
   svg.setAttributeNS(null,"width", width);
   svg.setAttributeNS(null,"height", distance);
 
   var new_connection_line = document.createElementNS(xmlns, "line")
-  new_connection_line.setAttributeNS(null,"x1", el1.outerWidth(true)/2 - parseInt(el1.css("borderWidth")))
+  new_connection_line.setAttributeNS(null,"x1", width/2)
   new_connection_line.setAttributeNS(null,"y1", parseInt(el1.css("borderWidth")));
-  new_connection_line.setAttributeNS(null,"x2", el2.outerWidth(true)/2 - parseInt(el2.css("borderWidth")))
-  new_connection_line.setAttributeNS(null,"y2", distance - (parseInt(el1.css("borderBottomWidth")) + parseInt(el2.css("borderTopWidth")) + el2.outerHeight()/2));
+  new_connection_line.setAttributeNS(null,"x2", width/2)
+  new_connection_line.setAttributeNS(null,"y2", distance);
   new_connection_line.setAttributeNS(null,"stroke-width","10");
   new_connection_line.setAttributeNS(null,"stroke","currentColor");
   svg.appendChild(new_connection_line)

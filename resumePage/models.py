@@ -47,7 +47,7 @@ class Bullet(models.Model):
             return self.portfolio_content.__class__.__name__
 
     def save(self, *args, **kwargs):
-        if(bulletImage.name != 'resumePage/svg/bullet/circle-solid.svg'):
+        if(self.bulletImage.name != 'resumePage/svg/bullet/circle-solid.svg'):
             self.modified = True;
         super(Bullet, self).save(*args, **kwargs)
 

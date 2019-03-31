@@ -222,6 +222,7 @@ body
         {
           position: absolute;
           left: -121px;
+          top: 40%;
 
           border: 6px solid #CCC;
           border-radius: 100%;
@@ -241,6 +242,24 @@ body
             }
             margin-left: 9px;
             line-height: 35px;
+          }
+
+          &.new_svg
+          {
+            left: -131px;
+            width: 70px;
+            height: 70px;
+
+            .bullet_svg
+            {
+              line-height: 55px;
+
+              svg
+              {
+                width: 40px;
+                height: 40px;
+              }
+            }
           }
         }
 
@@ -317,24 +336,6 @@ body
           }
         }
       }
-    }
-  }
-}
-
-.new_svg
-{
-  left: -131px;
-  width: 70px;
-  height: 70px;
-
-  .bullet_svg
-  {
-    line-height: 55px;
-
-    svg
-    {
-      width: 40px;
-      height: 40px;
     }
   }
 }
