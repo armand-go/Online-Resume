@@ -233,7 +233,12 @@ body
 
           .bullet_svg
           {
-            width: 20px;
+            svg
+            {
+              width: 20px;
+              height: 20px;
+              fill: currentColor;
+            }
             margin-left: 9px;
             line-height: 35px;
           }
@@ -312,6 +317,24 @@ body
           }
         }
       }
+    }
+  }
+}
+
+.new_svg
+{
+  left: -131px;
+  width: 70px;
+  height: 70px;
+
+  .bullet_svg
+  {
+    line-height: 55px;
+
+    svg
+    {
+      width: 40px;
+      height: 40px;
     }
   }
 }

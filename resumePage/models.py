@@ -33,6 +33,7 @@ class Bullet(models.Model):
 
     title = models.CharField(max_length=256, default='')
     bulletImage = models.FileField(upload_to='resumePage/svg/bullet', default='resumePage/svg/bullet/circle-solid.svg')
+    modified = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
 
     related_content = models.CharField(max_length=256, default='', blank=True)
@@ -44,6 +45,12 @@ class Bullet(models.Model):
             return self.bars_content.__class__.__name__
         elif hasattr(self, 'portfolio_content'):
             return self.portfolio_content.__class__.__name__
+
+    def save(self, *args, **kwargs):
+        if(bulletImage.name != 'resumePage/svg/bullet/circle-solid.svg'):
+            self.modified = True;
+        super(Bullet, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title

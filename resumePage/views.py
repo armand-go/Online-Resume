@@ -14,8 +14,6 @@ class ResumeView(TemplateView):
         except Introduction.DoesNotExist:
             context['intro'] = 'Error'
 
-        subcontent = Content.__subclasses__()
-
         try:
             context["sections"] = Section.objects.all().order_by('order')
         except Section.DoesNotExist:
