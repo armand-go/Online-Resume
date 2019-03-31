@@ -61,7 +61,7 @@ class Bullet(models.Model):
 
 class Content(models.Model):
     bullet = models.OneToOneField(Bullet, related_name='%(class)s_content',
-                                on_delete=models.CASCADE, default=None)
+                                on_delete=models.CASCADE, default=None, blank=True)
 
     class Meta:
         abstract = True
