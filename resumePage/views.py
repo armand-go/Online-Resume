@@ -21,11 +21,6 @@ class ResumeView(TemplateView):
         except Section.DoesNotExist:
             context["sections"] = 'Error'
 
-        for section in context["sections"]
-        for sub in subcontent:
-            try:
-
-
         return context
 
     def get(self, request):

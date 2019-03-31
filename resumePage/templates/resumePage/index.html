@@ -47,17 +47,25 @@
         <div class="sections_container row">
           {% for section in sections %}
           <div class="new_section">
-            <div class="section_title">
-              {{ section.title }}
-              {% for bullet in section.bullet.all %}
-              <div class="section_bullet">
-                {{ bullet.title }}
-                <div class="bullet_content">
-                
-                </div>
+            <div class="section_title">{{ section.title }}<hr>
+              <div class="dot">
+                {% include 'media/resumePage/svg/bullet/circle-solid.svg' %}
               </div>
-              {% endfor %}
             </div>
+            {% for bullet in section.bullets.all %}
+            <div class="section_bullet">
+              <div class="bullet_box">
+                <div class="bullet_svg">{% include bullet.bulletImage.url %}</div>
+              </div>
+              <div class="section_bullet_title">{{ bullet.title }}</div>
+              {% if bullet.get_related_content == "Text" %}
+              <div class="section_bullet_subtitle">{{ bullet.text_content.subtitle }}</div>
+              <div class="bullet_content">
+                <div class="text_content">{{ bullet.text_content.description|linebreaks }}</div>
+              </div>
+              {% endif %}
+            </div>
+            {% endfor %}
           </div>
           {% endfor %}
         </div>

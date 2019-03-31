@@ -11,7 +11,7 @@ class Introduction(models.Model):
     profession = models.CharField(max_length=256, default='')
     introduction = models.TextField(default='')
 
-    profile_pic = models.ImageField(upload_to='resumePage/img/', default=None, null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='resumePage/img/profilePic/', default=None, null=True, blank=True)
 
     def __str__(self):
         return self.name + ' ' + self.surname
@@ -29,12 +29,21 @@ class Section(models.Model):
 
 
 class Bullet(models.Model):
-    section = models.ForeignKey(Section, related_name='bullet', on_delete=models.CASCADE)
+    section = models.ForeignKey(Section, related_name='bullets', on_delete=models.CASCADE)
 
     title = models.CharField(max_length=256, default='')
-    bulletImage = models.ImageField(default=None, blank=True)
+    bulletImage = models.FileField(upload_to='resumePage/svg/bullet', default='resumePage/svg/bullet/circle-solid.svg')
     order = models.IntegerField(default=0)
-    
+
+    related_content = models.CharField(max_length=256, default='', blank=True)
+
+    def get_related_content(self):
+        if hasattr(self, 'text_content'):
+            return self.text_content.__class__.__name__
+        elif hasattr(self, 'bars_content'):
+            return self.bars_content.__class__.__name__
+        elif hasattr(self, 'portfolio_content'):
+            return self.portfolio_content.__class__.__name__
 
     def __str__(self):
         return self.title
@@ -48,7 +57,7 @@ class Content(models.Model):
                                 on_delete=models.CASCADE, default=None)
 
     subtitle = models.CharField(max_length=256, default=None, blank=True)
-    subtitleImg = models.ImageField(default=None, blank=True)
+    subtitleImg = models.FileField(upload_to='resumePage/svg/content', default=None, blank=True)
 
     class Meta:
         abstract = True
@@ -60,12 +69,20 @@ class Text(Content):
     def __str__(self):
         return self.description
 
+    def save(self, *args, **kwargs):
+        self.bullet.related_content = "text_content"
+        self.bullet.save()
+        super(Text, self).save(*args, **kwargs)
+
 
 class Bars(Content):
-    pass
+    def save(self, *args, **kwargs):
+        self.bullet.related_content = "bars_content"
+        self.bullet.save()
+        super(Bars, self).save(*args, **kwargs)
 
 class ProgressBar(models.Model):
-    bar = models.ForeignKey(Bars, related_name='progress_bar', on_delete=models.CASCADE, default=None)
+    bar = models.ForeignKey(Bars, related_name='progress_bars', on_delete=models.CASCADE, default=None)
 
     text = models.CharField(max_length=256, default='')
     percentage = models.IntegerField()
@@ -78,9 +95,14 @@ class Portfolio(Content):
     def __str__(self):
         return self.project.all()
 
+    def save(self, *args, **kwargs):
+        self.bullet.related_content = "portfolio_content"
+        self.bullet.save()
+        super(Portfolio, self).save(*args, **kwargs)
+
 
 class Project(models.Model):
-    portfolio = models.ForeignKey(Portfolio, related_name='project', on_delete=models.SET_NULL, null=True)
+    portfolio = models.ForeignKey(Portfolio, related_name='projects', on_delete=models.SET_NULL, null=True)
 
     name = models.CharField(max_length=256, default='')
     illustration = models.ImageField(blank=True, null=True)

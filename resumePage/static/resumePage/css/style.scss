@@ -132,9 +132,10 @@ body
 
     .col-profile_pic
     {
+      color: #CCC;
+      
       .profile_pic
       {
-        text-align: center;
         -moz-border-radius: 100%;
         -webkit-border-radius: 100%;
         width: 210px;
@@ -182,6 +183,8 @@ body
 
       .section_title
       {
+        position: relative;
+
         text-transform: uppercase;
         color: #2a5479;
         font-weight: bold;
@@ -189,15 +192,79 @@ body
         line-height: 40px;
         padding-bottom: 20px;
 
-        .section_bullet
+        hr
+        {
+          position: absolute;
+          top: 0;
+          left: -95px;
+
+          border-top: 3px solid #CCC;
+          width: 50px;
+        }
+
+        .dot
+        {
+          position: absolute;
+          top: -7px;
+          left: -47px;
+
+          width: 10px;
+          color: #CCC;
+        }
+      }
+
+      .section_bullet
+      {
+        position: relative;
+
+        .bullet_box
+        {
+          position: absolute;
+          left: -121px;
+
+          border: 6px solid #CCC;
+          border-radius: 100%;
+
+          width: 50px;
+          height: 50px;
+
+          color: #CCC;
+
+          .bullet_svg
+          {
+            width: 20px;
+            margin-left: 9px;
+            line-height: 35px;
+          }
+        }
+
+        .section_bullet_title
         {
           color: #3b658a;
-          border-bottom: 1px solid #ccc;
-          padding-bottom: 5px;
           font-weight: bold;
           text-transform: uppercase;
           font-size: 20px;
           margin-top: 14px;
+          margin-bottom: 10px;
+          padding-bottom: 5px;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .section_bullet_subtitle
+        {
+          font-size: 14px;
+          font-weight: bold;
+          color: #999999;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        .bullet_content
+        {
+          font-size: 14px;
+          line-height: 19px;
+          color: #555555;
+          margin: 0 0 10px;
         }
       }
     }
