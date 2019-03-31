@@ -20,8 +20,19 @@ $(document).ready(function() {
     bullet1 = $_bullets_point.eq(i);
     bullet2 = $_bullets_point.eq(i+1);
 
-    connectBullet(bullet1, bullet2)
+    connectBullet(bullet1, bullet2);
   }
+
+  $_progress = $(".progress")
+  for(var i = 0; i < $_progress.length; i++) {
+    progressBar = $_progress.eq(i).find(".progress-bar");
+    percentage = $_progress.eq(i).find(".percentage");
+
+    if(isColliding(progressBar, percentage)) {
+      percentage.css("color", "white");
+    }
+  }
+
 });
 
 function connectFirstBullet(col_profile_picture, el2) {
@@ -43,18 +54,18 @@ function connectFirstBullet(col_profile_picture, el2) {
 
   x = Math.max(profile_picture.outerWidth(true)/2,
               el2.outerWidth(true)/2 - parseInt(el2.css("borderWidth"))
-            )
+            );
 
-  var new_connection_line = document.createElementNS(xmlns, "line")
-  new_connection_line.setAttributeNS(null,"x1", x)
+  var new_connection_line = document.createElementNS(xmlns, "line");
+  new_connection_line.setAttributeNS(null,"x1", x);
   new_connection_line.setAttributeNS(null,"y1", 0);
-  new_connection_line.setAttributeNS(null,"x2", x)
-  new_connection_line.setAttributeNS(null,"y2", distance + 50);
+  new_connection_line.setAttributeNS(null,"x2", x);
+  new_connection_line.setAttributeNS(null,"y2", distance);
   new_connection_line.setAttributeNS(null,"stroke-width","10");
   new_connection_line.setAttributeNS(null,"stroke","currentColor");
-  svg.appendChild(new_connection_line)
+  svg.appendChild(new_connection_line);
 
-  col_profile_picture.append(svg)
+  col_profile_picture.append(svg);
 }
 
 function connectBullet(el1, el2) {
@@ -81,3 +92,25 @@ function connectBullet(el1, el2) {
 
   el1.append(svg)
 }
+
+var isColliding = function(el1, el2) {
+	var el1_offset = el1.offset();
+	var el1_height = el1.outerHeight(true);
+	var el1_width = el1.outerWidth(true);
+	var el1_distance_from_top = el1_offset.top + el1_height;
+	var el1_distance_from_left = el1_offset.left + el1_width;
+
+	var el2_offset = el2.offset();
+	var el2_height = el2.outerHeight(true);
+	var el2_width = el2.outerWidth(true);
+	var el2_distance_from_top = el2_offset.top + el2_height;
+	var el2_distance_from_left = el2_offset.left + el2_width;
+
+	var not_colliding = (el1_distance_from_top < el2_offset.top
+                      || el1_offset.top > el2_distance_from_top
+                      || el1_distance_from_left < el2_offset.left
+                      || el1_offset.left > el2_distance_from_left);
+
+	// Return whether it IS colliding
+	return !not_colliding;
+};

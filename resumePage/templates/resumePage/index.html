@@ -63,7 +63,17 @@
               <div class="bullet_content">
                 <div class="text_content">{{ bullet.text_content.description|linebreaks|safe }}</div>
               </div>
-              {% else if bullet.get_related_content == "Bars" %}
+              {% elif bullet.get_related_content == "Bars" %}
+              <div class="bullet_content">
+                {% for progress_bar in bullet.bars_content.progress_bars.all %}
+                  <div class="progress">
+                    <div class="progress-bar {% cycle 'color1' 'color2' 'color3' %}" role="progressbar" style='width:{{progress_bar.percentage}}%;' aria-valuenow="{{progress_bar.percentage}}" aria-valuemin="0" aria-valuemax="100">
+                      <div class="skill">{{ progress_bar.text }}</div>
+                    </div>
+                    <div class="percentage">{{ progress_bar.percentage }}%</div>
+                  </div>
+                {% endfor %}
+              </div>
               {% endif %}
             </div>
             {% endfor %}
