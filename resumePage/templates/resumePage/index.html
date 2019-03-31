@@ -59,9 +59,16 @@
               </div>
               <div class="section_bullet_title">{{ bullet.title }}</div>
               {% if bullet.get_related_content == "Text" %}
-              <div class="section_bullet_subtitle">{{ bullet.text_content.subtitle }}</div>
+              <div class="section_bullet_subtitle">
+                {% if bullet.text_content.subtitleImg.name %}
+                <div class="subtitle_svg">
+                  {% include bullet.text_content.subtitleImg.url%}
+                </div>
+                {% endif %}
+                {{ bullet.text_content.subtitle }}
+              </div>
               <div class="bullet_content">
-                <div class="text_content">{{ bullet.text_content.description|linebreaks|safe }}</div>
+                <div class="text_content">{{ bullet.text_content.description|linebreaks }}</div>
               </div>
               {% elif bullet.get_related_content == "Bars" %}
               <div class="bullet_content">
@@ -74,11 +81,38 @@
                   </div>
                 {% endfor %}
               </div>
+              {% elif bullet.get_related_content == "Portfolio" %}
+              <div class="bullet_content">
+                <div class="caroussel">
+                  {% for project in bullet.portfolio_content.projects.all %}
+                    <div class="project">
+                      {{ project.name }}
+                      {% include project.illustration %}
+                    </div>
+                  {% endfor %}
+                  <div class="buttons">
+                    <button class="previous">Previous</button>
+                    <button class="next">Next</button>
+                  </div>
+                </div>
+              </div>
               {% endif %}
             </div>
             {% endfor %}
           </div>
           {% endfor %}
+        </div>
+        <div class="footer row">
+          <div class="section_bullet">
+            <div class="bullet_box">
+              <div class="bullet_svg">{% include 'media/resumePage/svg/bullet/circle-solid.svg' %}</div>
+            </div>
+            <div class="thank_you">Thank You</div>
+          </div>
+          <div class="quote_block">
+            <div class="quote">“What you do is what matters, not what you think or say or plan.”</div>
+            <div class="author">Jason Fried</div>
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ body
 
 .container
 {
-  background: url("../../../media/resumePage/paper-bg2.png") no-repeat top left;
+  background: url("../../../media/resumePage/paper-bg2.png") no-repeat top left, url("../../../media/resumePage/paper-bg-bot.png") no-repeat bottom right;;
   background-color: #fafafa;
 
   margin-top: 50px;
@@ -97,8 +97,6 @@ body
     position: relative;
     z-index: 99;
 
-    // background: url(../img/paper-bg2.png) no-repeat top left, url(../img/paper-bg-bot.png) no-repeat bottom right, #fafafa;
-
     .intro.title
     {
       font-size: 52px;
@@ -168,8 +166,6 @@ body
   }
   .sections_container
   {
-    background: url("../../../media/resumePage/paper-bg-bot.png") no-repeat bottom right;
-
     padding-right: 15px;
     padding-left: 15px;
 
@@ -270,7 +266,7 @@ body
           text-transform: uppercase;
           font-size: 20px;
           margin-top: 14px;
-          margin-bottom: 10px;
+          margin-bottom: 5px;
           padding-bottom: 5px;
           border-bottom: 1px solid #ccc;
         }
@@ -280,8 +276,22 @@ body
           font-size: 14px;
           font-weight: bold;
           color: #999999;
-          margin-top: 10px;
+          margin-top: 5px;
           margin-bottom: 10px;
+
+          .subtitle_svg
+          {
+            float: left;
+            margin-right: 5px;
+            line-height: 20px;
+
+            svg
+            {
+              width: 16px;
+              height: 16px;
+              fill: currentColor;
+            }
+          }
         }
 
         .bullet_content
@@ -335,6 +345,83 @@ body
             }
           }
         }
+      }
+    }
+  }
+
+  .footer
+  {
+    display: block;
+
+    margin-top: 310px;
+
+    .section_bullet
+    {
+      margin-left: 258px;
+      margin-bottom: 180px;
+
+      position: relative;
+      width: 90%;
+
+      .bullet_box
+      {
+        position: absolute;
+        left: -121px;
+        top: 0;
+
+        border: 6px solid #CCC;
+        border-radius: 100%;
+
+        width: 50px;
+        height: 50px;
+
+        color: #CCC;
+
+        .bullet_svg
+        {
+          svg
+          {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+          }
+          margin-left: 9px;
+          line-height: 35px;
+        }
+      }
+    }
+
+    .thank_you
+    {
+      font-weight: 200;
+      font-size: 67px;
+      line-height: 48px;
+      color: #aaaaaa;
+      font-style: italic;
+      position: relative;
+      top: -5px;
+    }
+
+    .quote_block
+    {
+      background: #ce5f5f;
+      color: #fff;
+      padding-top: 17px;
+      padding-bottom: 17px;
+      text-align: center;
+      margin-top: 130px;
+
+      .quote
+      {
+        font-size: 22px;
+        font-weight: 200;
+        margin-bottom: 5px;
+      }
+
+      .author
+      {
+        font-size: 14px;
+        font-weight: bold;
       }
     }
   }

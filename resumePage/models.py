@@ -99,7 +99,7 @@ class ProgressBar(models.Model):
 
 class Portfolio(Content):
     def __str__(self):
-        return self.project.all()
+        return self.bullet.title
 
     def save(self, *args, **kwargs):
         self.bullet.related_content = "portfolio_content"
@@ -111,7 +111,7 @@ class Project(models.Model):
     portfolio = models.ForeignKey(Portfolio, related_name='projects', on_delete=models.SET_NULL, null=True)
 
     name = models.CharField(max_length=256, default='')
-    illustration = models.ImageField(blank=True, null=True)
+    illustration = models.ImageField(upload_to='resumePage/img/projects',blank=True, null=True)
 
     def __str__(self):
         return self.name
