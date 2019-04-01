@@ -12,7 +12,7 @@
     {% endcompress %}
     <script type="text/javascript" src="{% static 'resumePage/js/resumePage.js' %}"></script>
     <meta charset="utf-8">
-    <title>Armand GONTHIER's resume</title>
+    <title>{{ intro.name }} {{ intro.surname|upper }}'s resume</title>
   </head>
   <body>
     <div class="row">
@@ -62,7 +62,7 @@
               <div class="section_bullet_subtitle">
                 {% if bullet.text_content.subtitleImg.name %}
                 <div class="subtitle_svg">
-                  {% include bullet.text_content.subtitleImg.url%}
+                  {% include bullet.text_content.subtitleImg.url %}
                 </div>
                 {% endif %}
                 {{ bullet.text_content.subtitle }}
@@ -85,9 +85,11 @@
               <div class="bullet_content">
                 <div class="caroussel">
                   {% for project in bullet.portfolio_content.projects.all %}
-                    <div class="project">
-                      {{ project.name }}
-                      {% include project.illustration %}
+                    <div class="project" style="background-image: url({{ project.illustration.url }});">
+                      <div class="attributes">
+                        <div class="look">{% include 'media/resumePage/svg/content/search-solid.svg' %}</div>
+                        <div class="name">{{ project.name }}</div>
+                      </div>
                     </div>
                   {% endfor %}
                   <div class="buttons">
