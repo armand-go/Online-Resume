@@ -85,7 +85,8 @@
               <div class="bullet_content">
                 <div class="caroussel">
                   {% for project in bullet.portfolio_content.projects.all %}
-                    <div class="project" style="background-image: url({{ project.illustration.url }});">
+                    <div class="project">
+                      <div class="illustration" style="background-image: url({{ project.illustration.url }});"></div>
                       <div class="attributes">
                         <div class="look">{% include 'media/resumePage/svg/content/search-solid.svg' %}</div>
                         <div class="name">{{ project.name }}</div>
