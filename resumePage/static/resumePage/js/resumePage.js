@@ -9,11 +9,11 @@ $(document).ready(function() {
     $(this).css("width", "37");
   });
 
-  var $_profile_picture = $(".col-profile_pic")
-  var $_bullets_point = $(".section_bullet .bullet_box")
+  var $_profile_picture = $(".col-profile_pic");
+  var $_bullets_point = $(".section_bullet .bullet_box");
 
   // Connect Profile picture with first bullet
-  connectFirstBullet($_profile_picture, $_bullets_point.first())
+  connectFirstBullet($_profile_picture, $_bullets_point.first());
 
   // Connect all bullets together
   for(var i = 0; i < $_bullets_point.length - 1; i++) {
@@ -33,7 +33,43 @@ $(document).ready(function() {
     }
   }
 
+  $_caroussel = $(".caroussel");
+  moveToSelected($(".selected"));
+
+  $_caroussel.find(".project").click(function() {
+    moveToSelected($(this));
+  });
+
+  $('.previous').click(function() {
+    moveToSelected('prev');
+  });
+
+  $('.next').click(function() {
+    moveToSelected('next');
+  });
 });
+
+function moveToSelected(element) {
+
+  if (element == "next") {
+    var selected = $(".selected").next();
+  } else if (element == "prev") {
+    var selected = $(".selected").prev();
+  } else {
+    var selected = element;
+  }
+
+  var next = $(selected).next();
+  var prev = $(selected).prev(".project");
+
+  $(selected).removeClass().addClass("project selected");
+
+  $(prev).removeClass().addClass("project prev");
+  $(next).removeClass().addClass("project next");
+
+  $(next).nextAll(".project").removeClass().addClass('project hideRight');
+  $(prev).prevAll(".project").removeClass().addClass('project hideLeft');
+}
 
 function connectFirstBullet(col_profile_picture, el2) {
   var xmlns = "http://www.w3.org/2000/svg";
