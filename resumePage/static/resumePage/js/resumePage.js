@@ -34,7 +34,6 @@ $(document).ready(function() {
   }
 
   $_caroussel = $(".caroussel");
-  moveToSelected($(".selected"));
 
   $_caroussel.find(".project").click(function() {
     moveToSelected($(this));
@@ -47,20 +46,22 @@ $(document).ready(function() {
   $('.next').click(function() {
     moveToSelected('next');
   });
+
+  moveToSelected($(".selected"));
 });
 
 function moveToSelected(element) {
 
   if (element == "next") {
-    var selected = $(".selected").next();
+    var selected = $(".selected").nextAll(".project").eq(0);
   } else if (element == "prev") {
-    var selected = $(".selected").prev();
+    var selected = $(".selected").prevAll(".project").eq(0);
   } else {
     var selected = element;
   }
 
-  var next = $(selected).next();
-  var prev = $(selected).prev(".project");
+  var next = $(selected).nextAll(".project").eq(0);
+  var prev = $(selected).prevAll(".project").eq(0);
 
   $(selected).removeClass().addClass("project selected");
 

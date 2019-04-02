@@ -118,6 +118,7 @@ class Project(models.Model):
     name = models.CharField(max_length=256, default='')
     illustration = models.ImageField(upload_to='resumePage/img/projects',
                                         blank=True, null=True)
+    description = models.TextField(default='')
 
     def __str__(self):
         return self.name
