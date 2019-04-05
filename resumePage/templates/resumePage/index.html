@@ -30,7 +30,7 @@
         </div>
         <div class="header-buttons col-md-10 offset-md-1 row">
           <a href="#" class="btn btn-primary"><i class="fas fa-download"></i><span class="hide-text-box"><span class="hide-text dwld">Download my resume</span></span></a>
-          <a href="#" class="btn btn-primary"><i class="far fa-envelope"></i><span class="hide-text-box"><span class="hide-text msg">Send me a message</span></span></a>
+          <a href="#contact" class="btn btn-primary"><i class="far fa-envelope"></i><span class="hide-text-box"><span class="hide-text msg">Send me a message</span></span></a>
           <a href="#" class="btn btn-primary"><i class="fas fa-project-diagram"></i><span class="hide-text-box"><span class="hide-text proj">Check out my projects!</span></span></a>
         </div>
         <div class="resume_container row">
@@ -51,15 +51,17 @@
         <div class="sections_container row">
           {% for section in sections %}
           <div class="new_section">
-            <div class="section_title">{{ section.title }}<hr>
-              <div class="dot">
+            <div class="section_title">{{ section.title }}<hr />
+              <div class="bullet_box">
                 {% include 'media/resumePage/svg/bullet/circle-solid.svg' %}
               </div>
             </div>
             {% for bullet in section.bullets.all %}
-            <div class="section_bullet">
+            <div class="section_bullet {{ bullet.get_related_content }}">
               <div class="bullet_box {% if bullet.modified %}new_svg{% endif %}">
-                <div class="bullet_svg">{% include bullet.bulletImage.url %}</div>
+                <div class="bullet_svg">
+                  {% include bullet.bulletImage.url %}
+                </div>
               </div>
               <div class="section_bullet_title">{{ bullet.title }}</div>
               {% if bullet.get_related_content == "Text" %}
@@ -89,7 +91,7 @@
               <div class="bullet_content">
                 <ul class="caroussel">
                   {% for project in bullet.portfolio_content.projects.all %}
-                    <li class={% if forloop.counter == 1 %}"project selected"{% else %}"project"{% endif %}>
+                    <li class={% if forloop.counter == 2 %}"project selected"{% else %}"project"{% endif %}>
                       <div class="illustration" {% if project.illustration %} style="background-image: url({{ project.illustration.url }});" {% endif %}></div>
                       <div class="attributes">
                         <button type="button" class="look" data-toggle="modal" data-target=".bd-example-modal-lg{{ forloop.counter }}">{% include 'media/resumePage/svg/content/search-solid.svg' %}</button>
@@ -108,17 +110,47 @@
                           <div class="modal-body">{{ project.description }}</div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Want to know more?</button>
+                            <button type="button" class="btn btn-primary modal_contact"><a href="#contact">Want to know more?</a></button>
                           </div>
                         </div>
                       </div>
                     </div>
-
                   {% endfor %}
                 </ul>
                 <div class="buttons">
                   <button class="previous"><</button>
                   <button class="next">></button>
+                </div>
+              </div>
+              {% elif bullet.get_related_content == "Contact" %}
+              <div class="bullet_content" style="display: flex;">
+                <div class="col-md-8">
+                  <div class="form">
+                    <form class='fields' action="#" method="post">
+                      <div class="input_field">
+                        <label for="name" class="label_field"><i class="fas fa-user"></i></label>
+                        <input type="text" name="name" placeholder="Name" aria-required="true">
+                      </div>
+                      <div class="input_field">
+                        <label for="mail" class="label_field"><i class="far fa-envelope"></i></label>
+                        <input type="text" name="mail" placeholder="Mail" aria-required="true">
+                      </div>
+                      <div class="input_field">
+                        <label for="mail" class="label_field"><i class="fas fa-info"></i></label>
+                        <input type="text" name="subject" placeholder="Subject" aria-required="true">
+                      </div>
+                      <textarea name="message" placeholder="Message" rows="5" cols="30" aria-required="true"></textarea>
+                      <button type="button" name="button" class="submit">
+                        <input type="submit" value="Send">
+                        <i class="fas fa-arrow-right"></i>
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="contact_adress"><h4>ADDRESS</h4><p class="address">{{ bullet.contact_content.address }}</p></div>
+                  <div class="contact_phone"><h4>PHONE</h4><p class="phone">{{ bullet.contact_content.phone }}</p></div>
+                  <div class="contact_mail"><h4>MAIL</h4><p class="mail">{{ bullet.contact_content.mail }}</p></div>
                 </div>
               </div>
               {% endif %}

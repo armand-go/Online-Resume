@@ -47,6 +47,8 @@ class Bullet(models.Model):
             return self.bars_content.__class__.__name__
         elif hasattr(self, 'portfolio_content'):
             return self.portfolio_content.__class__.__name__
+        elif hasattr(self, 'contact_content'):
+            return self.contact_content.__class__.__name__
 
     def save(self, *args, **kwargs):
         if(self.bulletImage.name != 'resumePage/svg/bullet/circle-solid.svg'):
@@ -122,3 +124,16 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+class Contact(Content):
+    address = models.CharField(max_length=512, default = '', blank=True)
+    phone = models.CharField(max_length=256, default='', blank=True)
+    mail = models.CharField(max_length=256, default='', blank=True)
+
+    def __str__(self):
+        return self.bullet.title
+
+    def save(self, *args, **kwargs):
+        self.bullet.related_content = "contact_content"
+        self.bullet.save()
+        super(Contact, self).save(*args, **kwargs)
