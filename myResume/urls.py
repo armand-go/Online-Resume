@@ -22,7 +22,7 @@ from django.urls import path, include
 from resumePage import views
 
 urlpatterns = [
-    path('', views.ResumeView.as_view()),
+    path('', views.ResumeView.as_view(), name='resume'),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

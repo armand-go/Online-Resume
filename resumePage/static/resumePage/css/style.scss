@@ -8,6 +8,23 @@ body
   background-color: grey;
 }
 
+.messages
+{
+  width: 100%;
+
+  .alert
+  {
+    position: absolute;
+    width: 100%;
+
+    margin-left: -38px;
+    margin-top: -16px;
+
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
 .container
 {
   background: url("../../../media/resumePage/paper-bg2.png") no-repeat top left,
@@ -27,9 +44,9 @@ body
       width: 20%;
       float: left;
     }
-    .color1{background: #249991;}
-    .color2{background: #3b658a;}
-    .color3{background: #ce5f5f;}
+    .color1{background: #455ca8;}
+    .color2{background: #45a891;}
+    .color3{background: #a84551;}
   }
 
   .header-buttons
@@ -109,14 +126,14 @@ body
       font-size: 52px;
       color: #444444;
       letter-spacing: -1pt;
-      border-bottom: 1px solid #249991;
+      border-bottom: 1px solid #455ca8;
       padding-bottom: 10px;
       font-weight: 200;
       text-align: left;
 
       .bold
       {
-        color: #249991;
+        color: #0F74B5;
         font-weight: bold;
       }
     }
@@ -143,9 +160,9 @@ body
       {
         -moz-border-radius: 100%;
         -webkit-border-radius: 100%;
-        width: 210px;
-        height: 210px;
-        border: 5px solid #249991;
+        width: 230px;
+        height: 230px;
+        border: 5px solid #0F74B5;
         overflow: hidden;
         margin: 0 auto;
         background: #fafafa;
@@ -156,8 +173,8 @@ body
           background-size: cover;
           background-position: center;
 
-          width: 188px;
-          height: 188px;
+          width: 208px;
+          height: 208px;
           margin-top: 6px;
           margin-left: 6px;
 
@@ -315,6 +332,33 @@ body
             line-height: 19px;
             color: #555555;
             margin: 0 0 10px;
+
+            .btn-primary
+            {
+              background: #3b658a;
+              color: #fafafa;
+              border: #3b658a;
+              outline: none;
+
+              &:hover
+              {
+                background: #194368;
+              }
+            }
+
+            .btn
+            {
+              display: flex;
+              font-size: 28px;
+
+              height: 40px;
+              justify-content: center;
+              align-items: center;
+              margin-right: 6px;
+              width: 40px;
+
+              border-radius: 8px;
+            }
           }
 
           .progress
@@ -327,9 +371,9 @@ body
 
             .progress-bar
             {
-              &.color1 {background: #249991}
-              &.color2 {background: #3b658a}
-              &.color3 {background: #ce5f5f}
+              &.color1 {background: #5CA75A}
+              &.color2 {background: #1E5DBF}
+              &.color3 {background: #BF1E1E}
 
               .skill
               {
@@ -650,6 +694,8 @@ body
                     input
                     {
                       background-color: rgba(#1118bb, 1);
+                      width: 100%;
+                      height: 100%;
                     }
 
                     i
@@ -665,11 +711,15 @@ body
                     color:#fff;
                     font-family: 'Poppins', sans-serif;
                     transition: all 0.4s;
+                    width: 100%;
+                    height: 100%;
                   }
 
                   i
                   {
                     position: relative;
+                    top: -35px;
+                    right: -35px;
                     transition: all 0.4s;
                   }
                 }
@@ -784,4 +834,5 @@ body
 svg
 {
   overflow: visible;
+  width: 100px;
 }

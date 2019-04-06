@@ -12,6 +12,43 @@ $(document).ready(function() {
   var $_profile_picture = $(".col-profile_pic");
   var $_bullets_point = $(".section_bullet .bullet_box");
 
+  // Make Social Media div
+  $_social_media = $(".section_bullet_title:contains('Find me')").siblings(".bullet_content").find(".text_content")
+  $_social_media.html("")
+  $_social_media.css("display", "flex")
+
+  var new_link = document.createElement("a");
+  $(new_link).addClass("btn btn-primary")
+  new_link.setAttribute("href", "https://www.facebook.com/armand.gonthier");
+  var new_icon = document.createElement("i");
+  $(new_icon).addClass("fab fa-facebook-f")
+  new_link.appendChild(new_icon)
+  $_social_media.append(new_link)
+
+  var new_link = document.createElement("a");
+  $(new_link).addClass("btn btn-primary")
+  new_link.setAttribute("href", "https://www.instagram.com/armdgnthr/");
+  var new_icon = document.createElement("i");
+  $(new_icon).addClass("fab fa-instagram")
+  new_link.appendChild(new_icon)
+  $_social_media.append(new_link)
+
+  var new_link = document.createElement("a");
+  $(new_link).addClass("btn btn-primary")
+  new_link.setAttribute("href", "https://github.com/armand-gonthier");
+  var new_icon = document.createElement("i");
+  $(new_icon).addClass("fab fa-github")
+  new_link.appendChild(new_icon)
+  $_social_media.append(new_link)
+
+  var new_link = document.createElement("a");
+  $(new_link).addClass("btn btn-primary")
+  new_link.setAttribute("href", "https://www.linkedin.com/in/armand-gonthier");
+  var new_icon = document.createElement("i");
+  $(new_icon).addClass("fab fa-linkedin-in")
+  new_link.appendChild(new_icon)
+  $_social_media.append(new_link)
+
   // Create bullet outer circle
   makeBulletCircle($_bullets_point)
 
@@ -54,13 +91,13 @@ $(document).ready(function() {
   moveToSelected($(".selected"));
 
   $(".new_section .Contact").parent(".new_section").attr("id", "contact");
+  $(".new_section .Portfolio").parent(".new_section").attr("id", "project");
 
-  // $(".modal_contact").click(function(e) {
-  //   $('.modal').modal('hide');
-  //   $('html, body').animate({
-  //       scrollTop: $("#contact").offset().top
-  //   }, 2000);
-  // });
+  $(".modal_contact").click(function() {
+    $('.modal').modal('hide');
+    console.log('Hey');
+    window.scrollTo(0, document.getElementById('contact').offsetTop);
+  });
 
   var half_view = window.scrollY + window.visualViewport.height/2;
 
@@ -121,7 +158,7 @@ function setChildDefs(path) {
 
   var new_stop = document.createElementNS(xmlns, "stop")
   new_stop.setAttributeNS(null,"offset", 0);
-  new_stop.setAttributeNS(null,"style", "stop-color:rgb(36,153,145);stop-opacity:1");
+  new_stop.setAttributeNS(null,"style", "stop-color:#0F74B5;stop-opacity:1");
   new_stop.setAttributeNS(null,"class", "stop");
   new_gradient.appendChild(new_stop);
   var new_stop = document.createElementNS(xmlns, "stop")
@@ -138,7 +175,7 @@ function setChildDefs(path) {
 function colorHr(hr, half_view) {
   offset_top = hr.offset().top
   if(offset_top + 1 < half_view) {
-    hr.css("border-color", "#249991")
+    hr.css("border-color", "#0F74B5")
   } else {
     hr.css("border-color", "#CCC")
   }
@@ -259,7 +296,7 @@ function makeBulletCircle($_bullets_point) {
 
     var new_stop = document.createElementNS(xmlns, "stop")
     new_stop.setAttributeNS(null,"offset", 0);
-    new_stop.setAttributeNS(null,"style", "stop-color:rgb(36,153,145);stop-opacity:1");
+    new_stop.setAttributeNS(null,"style", "stop-color:#0F74B5;stop-opacity:1");
     new_stop.setAttributeNS(null,"class", "stop");
     new_gradient.appendChild(new_stop);
     var new_stop = document.createElementNS(xmlns, "stop")
@@ -316,7 +353,7 @@ function connectFirstBullet(col_profile_picture, el2) {
 
   var new_stop = document.createElementNS(xmlns, "stop")
   new_stop.setAttributeNS(null,"offset", 0);
-  new_stop.setAttributeNS(null,"style", "stop-color:rgb(36,153,145);stop-opacity:1");
+  new_stop.setAttributeNS(null,"style", "stop-color:#0F74B5;stop-opacity:1");
   new_stop.setAttributeNS(null,"class", "stop");
   new_gradient.appendChild(new_stop);
   var new_stop = document.createElementNS(xmlns, "stop")
@@ -365,7 +402,7 @@ function connectBullet(el1, el2) {
 
   var new_stop = document.createElementNS(xmlns, "stop")
   new_stop.setAttributeNS(null,"offset", 0);
-  new_stop.setAttributeNS(null,"style", "stop-color:rgb(36,153,145);stop-opacity:1");
+  new_stop.setAttributeNS(null,"style", "stop-color:#0F74B5;stop-opacity:1");
   new_stop.setAttributeNS(null,"class", "stop");
   new_gradient.appendChild(new_stop);
   var new_stop = document.createElementNS(xmlns, "stop")
