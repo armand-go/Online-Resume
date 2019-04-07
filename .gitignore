@@ -4,6 +4,11 @@ db.sqlite3
 .gitignore.swp
 staticfiles/
 
+!media/resumePage/svg/content/search-solid.svg
+!media/resumePage/svg/bullet/circle-solid.svg
+media/resumePage/img/*
+
+
 *.pyc
 *.png
 myResume/__pycache__/*
